@@ -1,0 +1,382 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 1px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-container {
+  flex: 1;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+}
+
+.flex-container > * {
+  padding: 10px;
+}
+
+.navigation {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center; /* vertically center */
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+}
+
+/* Image */
+.nav-image {
+  width: 10vw;
+  min-width: 200px;
+}
+
+/* Button styling */
+
+.add-btn,
+.nav-button,
+.button-holder button {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.add-btn:hover,
+.nav-button:hover,
+.button-holder button:hover {
+  background: #f7f7f7;
+}
+
+.nav-button.active,
+.button-holder button.active {
+  background: #3458ae;
+  color: white;
+  border-color: #3458ae;
+}
+
+.nav-button:hover {
+  background: #f0f0f0;
+}
+
+.nav-button.active {
+  background: #3458ae;
+  color: white;
+  border-color: #3458ae;
+}
+
+/* Base button style */
+.button-holder button {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.button-holder button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Specific Buttons --- */
+
+/* EDIT */
+.button-holder .edit {
+  border-color: #3458ae;
+  color: #3458ae;
+}
+.button-holder .edit:hover:not(:disabled),
+.button-holder .edit:active:not(:disabled) {
+  background: #3458ae;
+  color: #fff;
+}
+
+/* APPLY (green) */
+.button-holder .apply {
+  border-color: #28a745;
+  color: #28a745;
+}
+.button-holder .apply:hover:not(:disabled),
+.button-holder .apply:active:not(:disabled) {
+  background: #28a745;
+  color: #fff;
+}
+
+/* DELETE (red) */
+.button-holder .delete {
+  border-color: #720303;
+  color: #720303;
+}
+.button-holder .delete:hover:not(:disabled),
+.button-holder .delete:active:not(:disabled) {
+  background: #720303;
+  color: #fff;
+}
+
+/* GROUP (grey) */
+.button-holder .group {
+  border-color: #505050;
+  color: #505050;
+}
+.button-holder .group:hover:not(:disabled),
+.button-holder .group:active:not(:disabled) {
+  background: #505050;
+  color: #fff;
+}
+
+/* CANCEL (grey) */
+.button-holder .cancel {
+  border-color: #6c757d;
+  color: #6c757d;
+}
+.button-holder .cancel:hover:not(:disabled),
+.button-holder .cancel:active:not(:disabled) {
+  background: #6c757d;
+  color: #fff;
+}
+
+.main {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.table {
+  align-self: start;
+}
+
+td,
+th {
+  padding: 3px;
+}
+
+.button-holder {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  background: #fff;
+  border-top: 1px solid #eee; /* subtle divider */
+}
+
+footer {
+  text-align: center;
+}
+
+.finance-tables {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-evenly;
+  width: 100%;
+  display: flex;
+}
+
+.finance-tables > * > * {
+  align-self: center;
+}
+
+.finance-wrapper {
+  flex-flow: column wrap;
+  display: flex;
+}
+
+.divider {
+  width: 5px; /* fat vertical line */
+  background-color: #000000; /* dark grey or black */
+  border-radius: 2px; /* makes it look smoother */
+}
+
+/* CSS for finance tables */
+
+.finance-expense td.column-amount {
+  background-color: #f8bcbc; /* light red for expenses */
+}
+
+.finance-revenue td.column-amount {
+  background-color: #b2f1b2; /* light green for revenues */
+}
+
+/* CSS for groups */
+.groups-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.groups-modal {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  width: 360px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.groups-modal h2 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.groups-list {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+}
+
+.groups-list li {
+  padding: 8px 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.groups-list li:hover {
+  background: #f5f5f5;
+}
+
+.groups-list .empty {
+  text-align: center;
+  color: #777;
+  padding: 10px;
+}
+
+.group-input {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.group-input input {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.group-input button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.group-input button:hover {
+  background: #0069d9;
+}
+
+.modal-actions {
+  text-align: right;
+}
+
+.modal-actions button {
+  background: #e0e0e0;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-actions button:hover {
+  background: #d5d5d5;
+}
+
+/* CSS for Certificates modal */
+.certificates-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999 !important;
+}
+
+.certificates-modal {
+  background: white;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  text-align: center;
+}
+
+.certificates-select {
+  width: 100%;
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.certificates-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.btn-create,
+.btn-close {
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.btn-create {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-create:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-close {
+  background-color: #ccc;
+}
+
+footer {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-evenly;
+}
+
+a {
+  outline: 0;
+  text-decoration: none;
+  color: #3458ae;
+}
